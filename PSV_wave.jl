@@ -73,7 +73,7 @@ for n in 1:nt
     if n in frames_to_plot
         heatmap(Txx', color=:seismic, clims=(-1e-3, 1e-3), xlabel="x", ylabel="z",
             title="Gaussian Derivative wavefield at t=$(round(n*dt, digits=3)) s", framestyle=:box)
-        savefig("Derivative frame2_t$(round(n*dt, digits=3)).png")  # save each plot if needed
+        savefig("Derivative frame2_t$(round(n*dt, digits=3)).png") 
     end
    
 end

@@ -97,6 +97,11 @@ u_disp2 = cumsum(u_r2) .* dt
 u_disp3 = cumsum(u_r3) .* dt
 u_disp4 = cumsum(u_r4) .* dt
 
+u_disp1 = u_disp1 / maximum(abs.(u_disp1))
+u_disp2 = u_disp2 / maximum(abs.(u_disp2))
+u_disp3 = u_disp3 / maximum(abs.(u_disp3))
+u_disp4 = u_disp4 / maximum(abs.(u_disp4))
+
 plot(t, u_disp1, lw=2, xlabel="Time (s)", ylabel="Normalized displacement",
      title="Seismogram at 1500 m", legend=false)
 savefig("seismogram_1500m.png")
