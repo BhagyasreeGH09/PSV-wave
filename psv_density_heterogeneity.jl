@@ -1,13 +1,13 @@
 using LinearAlgebra, Plots
 
+Vp = 4000.0   
 Nx, Nz = 201, 201          
 dx, dz = 50, 50       
 dt = 0.4 * dx / (Vp * sqrt(2))   
 T = 2
 nt = Int(round(T/dt))     
 t = collect(0:dt:(nt-1)*dt)
-
-Vp = 4000.0              
+           
 nu = 0.25  
 Vs = Vp * sqrt((0.5 - nu) / (1 - nu))             
 rho= fill(3500.0, Nx, Nz) 
@@ -36,6 +36,9 @@ isrc, jsrc = div(Nx-1,2), div(Nz-1,2)
 times_to_plot = [0.5, 1.0, 1.4,1.6,1.8,2]  
 frames_to_plot = [Int(round(ti / dt)) for ti in times_to_plot]
 
+x = collect(0:dx:(Nx-2)*dx) 
+z = collect(0:dz:(Nz-1)*dz)
+
 for n in 1:nt
 
     Txx[isrc, jsrc] += source_time[n]
@@ -60,7 +63,7 @@ for n in 1:nt
 
     for i in 2:Nx-1
         Vx[i,end] = Vx[i,end] - ((dt*Vs)/dz)* (Vx[i,end] - Vx[i,end-1])
-        Vx[i,1] = Vx[i,1] +((dt*Vs)/dz)* (Vx[2,1] - Vx[1,i])
+        Vx[i,1] = Vx[i,1] +((dt*Vs)/dz)* (Vx[i,2] - Vx[i,1])
     end
 
     for i in 1:Nx-1, j in 2:Nz-1
@@ -78,8 +81,8 @@ for n in 1:nt
 
  
     if n in frames_to_plot
-        heatmap(Txx', color=:seismic, clims=(-1e-3, 1e-3), xlabel="x", ylabel="z",
-            title="Gaussian Derivative wavefield at t=$(round(n*dt, digits=3)) s", framestyle=:box)
+        heatmap(x,z,Txx', color=:seismic, clims=(-1e-3, 1e-3), xlabel="Range in meters", ylabel="Range in meters",
+             framestyle=:box)
         savefig("Derivative frame3_t$(round(n*dt, digits=3)).png")  
     end
    

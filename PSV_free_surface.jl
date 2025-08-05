@@ -102,18 +102,18 @@ u_disp2 = u_disp2 / maximum(abs.(u_disp2))
 u_disp3 = u_disp3 / maximum(abs.(u_disp3))
 u_disp4 = u_disp4 / maximum(abs.(u_disp4))
 
-plot(t, u_disp1, lw=2, xlabel="Time (s)", ylabel="Normalized displacement",
-     title="Seismogram at 1500 m", legend=false)
+plot(t, u_disp1, lw=2, xlabel="Time (s)", ylabel="Normalized radial displacement",
+    legend=false)
 savefig("seismogram_1500m.png")
 
-plot(t, u_disp2, lw=2, xlabel="Time (s)", ylabel="Normalized displacement",
-     title="Seismogram at 2000 m", legend=false)
+plot(t, u_disp2, lw=2, xlabel="Time (s)", ylabel="Normalized radial displacement",
+    legend=false)
 savefig("seismogram_2000m.png")
 
-plot(t, u_disp3, lw=2, xlabel="Time (s)", ylabel="Normalized displacement",
-     title="Seismogram at 2500 m", legend=false)
+plot(t, u_disp3, lw=2, xlabel="Time (s)", ylabel="Normalized radial displacement",
+      legend=false)
 savefig("seismogram_2500m.png")
 
-plot(t, u_disp4, lw=2, xlabel="Time (s)", ylabel="Normalized displacement",
-     title="Seismogram at 3000 m", legend=false)
+plot(t, u_disp4, lw=2, xlabel="Time (s)", ylabel="Normalized radial displacement",
+     legend=false)
 savefig("seismogram_3000m.png")
