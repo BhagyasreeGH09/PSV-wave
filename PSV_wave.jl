@@ -55,8 +55,8 @@ for n in 1:nt
     end
 
     for i in 2:Nx-1
-        Vx[i,end] = Vx[i,end] - ((dt*Vs)/dz)* (Vx[i,end] - Vx[i,end-1])
-        Vx[i,1] = Vx[i,1] +((dt*Vs)/dz)* (Vx[i,2] - Vx[i,1])
+        Vx[i,end] = Vx[i,end] - ((dt*Vp)/dz)* (Vx[i,end] - Vx[i,end-1])
+        Vx[i,1] = Vx[i,1] +((dt*Vp)/dz)* (Vx[i,2] - Vx[i,1])
     end
 
     for i in 1:Nx-1, j in 2:Nz-1
